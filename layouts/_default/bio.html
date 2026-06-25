@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{- $asideSlug := .Params.asideWork | default "spider-and-i" -}}
+{{- $w := site.GetPage (printf "/work/%s" $asideSlug) -}}
+<main class="wrap">
+  <div class="bio-grid">
+    <div class="bio-body">
+      {{ .Content }}
+      <p class="bio-more"><a class="link" href="{{ "/cv/" | relURL }}">View full CV →</a></p>
+    </div>
+    {{- with $w }}
+    {{- $img := ($w.Resources.GetMatch "*.jpeg").Resize "1000x q82" }}
+    <figure class="bio-aside" style="margin:0;">
+      <span class="mat" style="display:block;"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ .Params.alt | default .Title }}" loading="lazy" /></span>
+      <figcaption>{{ .Title }}, {{ lower .Params.medium }}, {{ .Params.year }}</figcaption>
+    </figure>
+    {{- end }}
+  </div>
+</main>
+{{ end }}

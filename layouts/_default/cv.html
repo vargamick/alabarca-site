@@ -1,0 +1,17 @@
+{{ define "main" }}
+<main class="wrap">
+  <div class="cv">
+    {{- range site.Data.cv.sections }}
+    <section class="cv-section">
+      <h2>{{ .title }}</h2>
+      {{- range .rows }}
+      <div class="cv-row">
+        <div class="cv-year">{{ .year }}</div>
+        <div class="cv-detail">{{ .detail | markdownify }}</div>
+      </div>
+      {{- end }}
+    </section>
+    {{- end }}
+  </div>
+</main>
+{{ end }}

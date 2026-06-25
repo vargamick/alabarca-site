@@ -1,0 +1,23 @@
+{{- /* Renders one salon gallery card. Context: the work Page. */ -}}
+{{- $img := .Resources.GetMatch "*.jpeg" -}}
+{{- if not $img }}{{ $img = (.Resources.ByType "image").GetMatch "*" }}{{ end -}}
+{{- if $img -}}
+{{- $thumb := $img.Resize "1000x q82" -}}
+{{- $full := $img.Resize "1800x q86" -}}
+{{- $year := .Params.year -}}
+{{- $meta := .Params.medium -}}
+{{- if $year }}{{ $meta = printf "%s · %v" .Params.medium $year }}{{ end -}}
+{{- if .Params.dimensions }}{{ $meta = printf "%s · %s" $meta .Params.dimensions }}{{ end -}}
+{{- $cap := .Params.medium -}}
+{{- if $year }}{{ $cap = printf "%s, %v" .Params.medium $year }}{{ end -}}
+{{- $sold := in (slice "sold" "nfs") (lower (.Params.availability | default "available")) -}}
+{{- $enquire := printf "mailto:%s?%s" site.Params.email (querify "subject" (printf "Enquiry: %s" .Title)) -}}
+<button class="work" data-work data-full="{{ $full.RelPermalink }}" data-title="{{ .Title }}" data-meta="{{ $meta }}"{{ if not $sold }} data-enquire="{{ $enquire }}"{{ end }}>
+  <span class="mat">
+    <img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ .Params.alt | default .Title }}" loading="lazy" />
+    {{- if eq (lower (.Params.availability | default "available")) "sold" }}<span class="badge">Sold</span>{{ end }}
+    {{- if eq (lower (.Params.availability | default "available")) "nfs" }}<span class="badge">NFS</span>{{ end }}
+  </span>
+  <span class="cap"><span class="t">{{ .Title }}</span><span class="m">  ·  {{ $cap }}</span></span>
+</button>
+{{- end -}}

@@ -1,0 +1,27 @@
+sections:
+  - title: Education
+    rows:
+      - year: "2024"
+        detail: "Bachelor of Fine Arts (Painting), <span class=\"place\">Royal Melbourne Institute of Technology (RMIT)</span>"
+
+  - title: Selected Exhibitions
+    rows:
+      - year: "2025"
+        detail: "*Homage to Turner*, group show <span class=\"place\">— West End Art Space, Melbourne</span>"
+      - year: "2024"
+        detail: "RMIT Graduate Exhibition <span class=\"place\">— RMIT Building 2, Melbourne</span>"
+      - year: "2023"
+        detail: "*Displacement, Identity and Language: Marc Chagall* <span class=\"place\">— RMIT University School of Art, in partnership with Jewish Museum Australia, RMIT Building 2, Melbourne</span>"
+
+  - title: Awards
+    rows:
+      - year: "2024"
+        detail: "Chapman & Bailey Award <span class=\"place\">— RMIT Graduate Exhibition</span>"
+
+  - title: Collections
+    rows:
+      - year: ""
+        detail: "Held in various private collections"
+
+
+        

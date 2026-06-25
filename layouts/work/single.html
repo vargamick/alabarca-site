@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{- $img := .Resources.GetMatch "*.jpeg" -}}
+{{- if not $img }}{{ $img = (.Resources.ByType "image").GetMatch "*" }}{{ end -}}
+{{- $avail := lower (.Params.availability | default "available") -}}
+{{- $enquire := printf "mailto:%s?%s" site.Params.email (querify "subject" (printf "Enquiry: %s" .Title)) -}}
+<main class="wrap">
+  <article class="work-detail">
+    {{- with $img }}
+    {{- $main := .Fit "1600x1600 q86" }}
+    <figure class="figure" style="margin:0;">
+      <span class="mat" style="display:block;"><img src="{{ $main.RelPermalink }}" width="{{ $main.Width }}" height="{{ $main.Height }}" alt="{{ $.Params.alt | default $.Title }}" /></span>
+    </figure>
+    {{- end }}
+    <div class="meta">
+      <h1>{{ .Title }}{{ if eq $avail "sold" }} <span class="badge">Sold</span>{{ else if eq $avail "nfs" }} <span class="badge">NFS</span>{{ end }}</h1>
+      <p class="sub">{{ .Params.medium }}{{ with .Params.year }} · {{ . }}{{ end }}</p>
+      <div class="specs">
+        {{- with .Params.dimensions }}
+        <div class="row"><span class="k">Dimensions</span><span class="v">{{ . }}</span></div>
+        {{- end }}
+        {{- with .Params.price }}
+        <div class="row"><span class="k">Price</span><span class="v">{{ . }}</span></div>
+        {{- end }}
+        <div class="row"><span class="k">Availability</span><span class="v">
+          {{- if eq $avail "sold" }}Sold{{ else if eq $avail "nfs" }}Not for sale{{ else }}Available{{ end -}}
+        </span></div>
+      </div>
+      {{- with .Content }}
+      <div class="desc">{{ . }}</div>
+      {{- end }}
+      {{- if ne $avail "sold" }}
+      <p class="bio-more"><a class="link" href="{{ $enquire }}">Enquire about this work →</a></p>
+      {{- end }}
+      <p class="back"><a class="link" href="{{ "/" | relURL }}">← Back to work</a></p>
+    </div>
+  </article>
+</main>
+{{ end }}

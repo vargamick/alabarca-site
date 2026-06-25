@@ -1,0 +1,14 @@
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+{{- $title := .Title -}}
+{{- if .IsHome }}
+<title>{{ site.Title }} — Painter</title>
+{{- else }}
+<title>{{ site.Title }} — {{ $title }}</title>
+{{- end }}
+{{- $desc := or .Description .Summary site.Params.description }}
+<meta name="description" content="{{ $desc | plainify | chomp }}" />
+{{- $css := resources.Get "css/site.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" />
+</head>

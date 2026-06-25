@@ -1,0 +1,23 @@
+{{ define "main" }}
+{{- $works := sort (where site.RegularPages "Section" "work") "Weight" -}}
+{{- $n := len $works -}}
+{{- $half := math.Ceil (div (float $n) 2) | int -}}
+{{- $col1 := first $half $works -}}
+{{- $col2 := after $half $works -}}
+<main class="wrap">
+  <section class="gallery">
+    <div class="salon">
+      <div class="salon-col">
+        {{- range $col1 }}
+        {{ partial "work-card.html" . }}
+        {{- end }}
+      </div>
+      <div class="salon-col">
+        {{- range $col2 }}
+        {{ partial "work-card.html" . }}
+        {{- end }}
+      </div>
+    </div>
+  </section>
+</main>
+{{ end }}
