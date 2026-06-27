@@ -5,7 +5,7 @@
   <div class="bio-grid">
     <div class="bio-body">
       {{ .Content }}
-      <p class="bio-more"><a class="link" href="{{ "/cv/" | relURL }}">View full CV →</a></p>
+      <p class="bio-more"><a class="link" href="{{ "cv/" | relURL }}">View full CV →</a></p>
     </div>
     {{- with $w }}
     {{- $img := ($w.Resources.GetMatch "*.jpeg").Resize "1000x q82" }}

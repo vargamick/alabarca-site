@@ -1,11 +1,11 @@
 {{- $isWork := or .IsHome (eq .Section "work") -}}
 <header class="site-head">
-  <a class="wordmark" href="{{ "/" | relURL }}"><span class="rule"></span><span class="name">{{ site.Title }}</span><span class="rule"></span></a>
+  <a class="wordmark" href="{{ site.Home.RelPermalink }}"><span class="rule"></span><span class="name">{{ site.Title }}</span><span class="rule"></span></a>
   <div class="tagline">{{ site.Params.tagline }}</div>
   <nav class="nav">
-    <a href="{{ "/" | relURL }}"{{ if $isWork }} aria-current="page"{{ end }}>Work</a>
-    <a href="{{ "/bio/" | relURL }}"{{ if eq .RelPermalink (relURL "/bio/") }} aria-current="page"{{ end }}>Bio</a>
-    <a href="{{ "/cv/" | relURL }}"{{ if eq .RelPermalink (relURL "/cv/") }} aria-current="page"{{ end }}>CV</a>
-    <a href="{{ "/contact/" | relURL }}"{{ if eq .RelPermalink (relURL "/contact/") }} aria-current="page"{{ end }}>Contact</a>
+    <a href="{{ site.Home.RelPermalink }}"{{ if $isWork }} aria-current="page"{{ end }}>Work</a>
+    <a href="{{ "bio/" | relURL }}"{{ if eq .RelPermalink (relURL "bio/") }} aria-current="page"{{ end }}>Bio</a>
+    <a href="{{ "cv/" | relURL }}"{{ if eq .RelPermalink (relURL "cv/") }} aria-current="page"{{ end }}>CV</a>
+    <a href="{{ "contact/" | relURL }}"{{ if eq .RelPermalink (relURL "contact/") }} aria-current="page"{{ end }}>Contact</a>
   </nav>
 </header>
