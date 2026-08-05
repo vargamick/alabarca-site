@@ -6,8 +6,7 @@ enableRobotsTXT = true
 [params]
   tagline = "Painter · Naarm Melbourne"
   description = "Ella Barker is an emerging painter practising in Naarm / Melbourne, working primarily in oils on canvas."
-  email = @gmail.com
-  gmailHandle = ellabarker67
+  email = @ellabarker67-droid
   instagram = "https://instagram.com/"
   instagramHandle = "@ellabark3rart"
   location = "Naarm / Melbourne, Australia"
