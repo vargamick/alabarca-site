@@ -2,7 +2,7 @@
 title: "Two Boys"
 weight: 40
 medium: "Charcoal on paper"
-year: 2023
+year: 2026
 dimensions: "66 x 51 cm"
 price: "$150"
 availability: "available"
